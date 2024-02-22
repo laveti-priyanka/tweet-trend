@@ -13,7 +13,7 @@ environment {
                   sh 'mvn clean deploy -Dmaven.test.skip=true'
             }
         }
-        stag("SonarQube Ananlysis") {
+        stage("SonarQube Ananlysis") {
             environment {
                 scannerHome = tool 'valaxy-sonar-scanner'
             }
@@ -21,7 +21,7 @@ environment {
                 withSonarQubeEnv('valaxy-sonarqube-server') {
                     sh "${scannerHome}/bin/sonar-scanner"
                 }
-                
+
             }
         }
     }
