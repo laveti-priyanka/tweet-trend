@@ -20,6 +20,7 @@ environment {
             steps {
                 withSonarQubeEnv('valaxy-sonarqube-server') {
                     sh "${scannerHome}/bin/sonar-scanner"
+                    
                 }
 
             }
