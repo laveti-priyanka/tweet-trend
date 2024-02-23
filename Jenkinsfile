@@ -20,8 +20,7 @@ environment {
             }
             steps {
                 withSonarQubeEnv('valaxy-sonarqube-server') {
-                    sh '''${scannerHome}/bin/sonar-scanner
-                    -Dsonar.projectKey=valaxy17-key_twittertrend \
+                    sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=valaxy17-key_twittertrend \
                    -Dsonar.projectName=twittertrend \
                    -Dsonar.projectVersion=1.0 \
                    -Dsonar.sources=src/ \
