@@ -49,7 +49,15 @@
 			<version>4.13.1</version>
 			<scope>test</scope>
 		</dependency>
-        
+        		<dependency>
+			<groupId>org.sonarsource.scanner.maven</groupId>
+			<artifactId>sonar-maven-plugin</artifactId>
+			<version>3.9.1.2184</version>
+			<configuration>
+			<sonar.java.version>11</sonar.java.version>
+			</configuration>
+			<scope>test</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
