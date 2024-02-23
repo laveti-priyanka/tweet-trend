@@ -6,6 +6,7 @@ pipeline {
     }
 environment {
     PATH = "/opt/apache-maven-3.9.6/bin:$PATH"
+    PATH_JAVA = "/usr/lib/jvm/java-1.8.0-openjdk-amd64/bin:$PATH_JAVA"
 }
     stages {
         stage("build"){
