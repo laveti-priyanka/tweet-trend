@@ -1,6 +1,7 @@
 pipeline {
     agent {
         node {
+            label 'java'
             label 'maven'
         }
     }
@@ -20,7 +21,7 @@ environment {
             steps {
                 withSonarQubeEnv('valaxy-sonarqube-server') {
                     sh "${scannerHome}/bin/sonar-scanner"
-                    
+
                 }
 
             }
