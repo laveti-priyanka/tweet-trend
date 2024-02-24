@@ -6,6 +6,8 @@ pipeline {
     }
 environment {
     PATH = "/opt/apache-maven-3.9.6/bin:$PATH"
+     SONARSERVER = 'valaxy-sonarqube-serverr'
+     SONARSCANNER = 'valaxy-sonar-scannerr'
 }
    stages {
         stage("build"){
@@ -25,10 +27,10 @@ environment {
 
         stage('SonarQube analysis') {
             environment {
-                    scannerHome = tool 'valaxy-sonar-scanner'
+                    scannerHome = tool "${SONARSCANNER}"
                  }
                     steps{
-                        withSonarQubeEnv('valaxy-sonarqube-server') { // If you have configured more than one global server connection, you can specify its name
+                       withSonarQubeEnv("${SONARSERVER}") { // If you have configured more than one global server connection, you can specify its name
                         sh "${scannerHome}/bin/sonar-scanner"
     }
     }
