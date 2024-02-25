@@ -71,13 +71,7 @@ environment {
             }
         }
     }
-    stage("deploy") {
-        steps {
-            script {
-                sh './deploy.sh'
-            }
-        }
-    }
+    
     stage(" Deploy ") {
        steps {
          script {
