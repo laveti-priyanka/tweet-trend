@@ -1,0 +1,13 @@
+[jenkins-master]
+10.1.1.141
+
+[jenkins-master:vars]
+ansible_user=ubuntu
+ansible_ssh_private_key_file=/opt/tweet-trend.pem
+
+[jenkins-slave]
+10.1.1.111
+
+[jenkins-slave:vars]
+ansible_user=ubuntu
+ansible_ssh_private_key_file=/opt/tweet-trend.pem
