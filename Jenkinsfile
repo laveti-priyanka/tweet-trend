@@ -27,7 +27,8 @@ environment {
                  echo "----------- unit test Complted ----------"
             }
         }
-        stage('SonarQube Analysis') {
+        stage('SonarQube Analysis')
+         {
             steps {
                 script {
                     // Run SonarQube analysis
@@ -41,7 +42,8 @@ environment {
                 }
             }
         }
-            stage("Jar Publish") {
+            stage("Jar Publish") 
+            {
         steps {
             script {
                     echo '<--------------- Jar Publish Started --------------->'
@@ -74,11 +76,13 @@ environment {
         }
       }
     }
-     stage (" Docker Publish "){
+     stage (" Docker Publish ")
+     {
         steps {
             script {
                echo '<--------------- Docker Publish Started --------------->'  
-                docker.withRegistry(registry, 'jfrog-cred'){
+                docker.withRegistry(registry, 'jfrog-cred'
+                ){
                     app.push()
                 }    
                echo '<--------------- Docker Publish Ended --------------->'  
