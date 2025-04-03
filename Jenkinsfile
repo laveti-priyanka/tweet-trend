@@ -27,8 +27,7 @@ environment {
                  echo "----------- unit test Complted ----------"
             }
         }
-        stage('SonarQube Analysis')
-         {
+        stage('SonarQube Analysis') {
             steps {
                 script {
                     // Run SonarQube analysis
@@ -42,8 +41,7 @@ environment {
                 }
             }
         }
-            stage("Jar Publish") 
-            {
+            stage("Jar Publish") {
         steps {
             script {
                     echo '<--------------- Jar Publish Started --------------->'
@@ -52,7 +50,7 @@ environment {
                      def uploadSpec = """{
                           "files": [
                             {
-                              "pattern": "/home/ubuntu/jenkins/workspace/tweet-trend/tweet-trendg/target/(*)",
+                              "pattern": "/home/ubuntu/jenkins/workspace/taxi-booking/taxi-booking/target/(*)",
                               "target": "taxi-libs-release-local/{1}",
                               "flat": "false",
                               "props" : "${properties}",
@@ -65,9 +63,9 @@ environment {
                      server.publishBuildInfo(buildInfo)
                      echo '<--------------- Jar Publish Ended --------------->'  
              }
-        }   
-    }
-    stage(" Docker Build ") {
+             
+        } 
+        stage(" Docker Build ") {
       steps {
         script {
            echo '<--------------- Docker Build Started --------------->'
@@ -76,20 +74,19 @@ environment {
         }
       }
     }
-     stage (" Docker Publish ")
-     {
+     stage (" Docker Publish "){
         steps {
             script {
                echo '<--------------- Docker Publish Started --------------->'  
-                docker.withRegistry(registry, 'jfrog-cred'
-                ){
+                docker.withRegistry(registry, 'jfrog-cred'){
                     app.push()
                 }    
                echo '<--------------- Docker Publish Ended --------------->'  
             }
         }
     }
-
+  
+    }
 
         }
 
