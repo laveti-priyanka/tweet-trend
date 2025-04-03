@@ -1,4 +1,6 @@
 def registry ='https://tweet12.jfrog.io/'
+def imageName = 'tweet12.jfrog.io/tweet-trend-docker-local/tweet-trendapp'
+def version   = '1.0.1'
 pipeline {
     agent {
         node {
@@ -48,7 +50,7 @@ environment {
                      def uploadSpec = """{
                           "files": [
                             {
-                              "pattern": "/home/ubuntu/jenkins/workspace/taxi-booking/taxi-booking/target/(*)",
+                              "pattern": "/home/ubuntu/jenkins/workspace/tweet-trend/tweet-trendg/target/(*)",
                               "target": "taxi-libs-release-local/{1}",
                               "flat": "false",
                               "props" : "${properties}",
@@ -63,6 +65,27 @@ environment {
              }
         }   
     }
+    stage(" Docker Build ") {
+      steps {
+        script {
+           echo '<--------------- Docker Build Started --------------->'
+           app = docker.build(imageName+":"+version)
+           echo '<--------------- Docker Build Ends --------------->'
+        }
+      }
+    }
+     stage (" Docker Publish "){
+        steps {
+            script {
+               echo '<--------------- Docker Publish Started --------------->'  
+                docker.withRegistry(registry, 'jfrog-cred'){
+                    app.push()
+                }    
+               echo '<--------------- Docker Publish Ended --------------->'  
+            }
+        }
+    }
+
 
         }
 
