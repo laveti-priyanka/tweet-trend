@@ -50,7 +50,7 @@ environment {
                      def uploadSpec = """{
                           "files": [
                             {
-                              "pattern": "/home/ubuntu/jenkins/workspace/taxi-booking/taxi-booking/target/(*)",
+                              "pattern": "/home/ubuntu/jenkins/workspace/tweet-trend/tweet-trend/target/(*)",
                               "target": "taxi-libs-release-local/{1}",
                               "flat": "false",
                               "props" : "${properties}",
