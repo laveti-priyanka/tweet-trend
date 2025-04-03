@@ -25,20 +25,20 @@ environment {
                  echo "----------- unit test Complted ----------"
             }
         }
-        stage('SonarQube Analysis') 
-        {
+         stage('SonarQube Analysis') {
             steps {
                 script {
                     // Run SonarQube analysis
                     sh """
                     mvn sonar:sonar \
-                    -Dsonar.projectKey=tweet-trend1_tweet\
-                    -Dsonar.organization=tweet-trend1\
+                    -Dsonar.projectKey=Chandanasai1712_cicd-taxiapp \
+                    -Dsonar.organization=taxiapp \
                     -Dsonar.host.url=https://sonarcloud.io \
                     -Dsonar.token=${SONAR_TOKEN}
                     """
                 }
             }
+        }
             stage("Jar Publish") {
         steps {
             script {
